@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Doctor } from 'src/doctor/entities/doctor.entity';
+import { Doctor } from 'src/hotel/entities/hotel.entity';
 import { initialData } from './data';
 import { Appointment } from 'src/appointment/entities/appointment.entity';
 import { Patient } from 'src/patient/entities/patient.entity';

@@ -1,8 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsArray, IsIn, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
-import { MODALITY } from "src/common/constants";
 
-export class CreateDoctorDto {
+export class CreateHotelDto {
 
   @ApiProperty()
   @IsString()
@@ -15,25 +14,14 @@ export class CreateDoctorDto {
   phone: string;
 
   @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
-  speciality: string;
-
-  @ApiProperty()
   @IsNumber()
   @IsNotEmpty()
   fee: number;
 
-  @ApiProperty({ type: [Number] })
-  @IsNotEmpty()
-  @IsArray()
-  // @IsIn([MODALITY.PRESENCIAL, MODALITY.VIRTUAL], { each: true })
-  modality: number[];
-
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  office: string;
+  address: string;
 
   @ApiProperty()
   @IsOptional()

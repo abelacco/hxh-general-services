@@ -1,23 +1,23 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { DoctorService } from './doctor.service';
-import { DoctorController } from './doctor.controller';
-import { Doctor, DoctorSchema } from './entities/doctor.entity';
+import { HotelService } from './hotel.service';
+import { HotelController } from './hotel.controller';
+import { Hotel, HotelSchema } from './entities/hotel.entity';
 import { MongoDbService } from './db/mongodb.service';
 import { CloudinaryModule } from 'src/cloudinary/cloudinary.module';
 
 @Module({
-  controllers: [DoctorController],
-  providers: [DoctorService, MongoDbService],
+  controllers: [HotelController],
+  providers: [HotelService, MongoDbService],
   imports: [
     MongooseModule.forFeature([
       {
-        name: Doctor.name,
-        schema: DoctorSchema,
+        name: Hotel.name,
+        schema: HotelSchema,
       },
     ]),
     CloudinaryModule,
   ],
-  exports: [MongooseModule, DoctorService],
+  exports: [MongooseModule, HotelService],
 })
 export class DoctorModule {}
