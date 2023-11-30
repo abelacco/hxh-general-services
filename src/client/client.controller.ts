@@ -5,7 +5,7 @@ import { Client } from './entities/client.entity';
 import { UpdateClientDto, findCreateClientDto } from './dto';
 import { ClientService } from './client.service';
 
-@ApiTags('CLient')
+@ApiTags('Client')
 @Controller('client')
 export class ClientController {
   constructor(private readonly clientService: ClientService) {}
