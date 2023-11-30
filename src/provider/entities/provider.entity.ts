@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Document } from 'mongoose';
 
 @Schema()
-export class Hotel extends Document {
+export class Provider extends Document {
   @ApiProperty()
   @Prop({
     type: String,
@@ -55,4 +55,4 @@ export class Hotel extends Document {
   // hunter: string; ;
 }
 
-export const HotelSchema = SchemaFactory.createForClass(Hotel);
+export const ProviderSchema = SchemaFactory.createForClass(Provider);

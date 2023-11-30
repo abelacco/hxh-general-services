@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
 import { PaginationDto } from 'src/common/dto';
 
-export class FindHotelDto extends PaginationDto {
+export class FindProviderDto extends PaginationDto {
 
   @ApiProperty()
   @IsString()

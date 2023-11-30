@@ -3,7 +3,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { Document } from "mongoose";
 
 @Schema()
-export class Patient extends Document {
+export class Client extends Document {
   @ApiProperty()
   @Prop({
     type: String
@@ -25,4 +25,4 @@ export class Patient extends Document {
   dni: string;
 }
 
-export const PatientSchema = SchemaFactory.createForClass(Patient);
+export const ClientSchema = SchemaFactory.createForClass(Client);

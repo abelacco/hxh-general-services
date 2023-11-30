@@ -5,12 +5,12 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Payment, PaymentSchema } from './entities/payment.entity';
 import { AppointmentModule } from 'src/appointment/appointment.module';
 import { MongoDbService } from './db/mongodb.service';
-import { DoctorModule } from 'src/doctor/doctor.module';
+import { ProviderModule } from 'src/provider/provider.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Payment.name, schema: PaymentSchema }]),
-    DoctorModule,
+    ProviderModule,
     forwardRef(() => AppointmentModule),
   ],
   controllers: [PaymentController],

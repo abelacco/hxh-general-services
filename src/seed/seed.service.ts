@@ -1,22 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Doctor } from 'src/hotel/entities/hotel.entity';
 import { initialData } from './data';
 import { Appointment } from 'src/appointment/entities/appointment.entity';
-import { Patient } from 'src/patient/entities/patient.entity';
 import { Store } from 'src/store/entities/store.entity';
 import { Affiliate } from 'src/affiliate/entities/affiliate.entity';
+import { Provider } from 'src/provider/entities/provider.entity';
+import { Client } from 'src/client/entities/client.entity';
 
 @Injectable()
 export class SeedService {
   constructor(
-    @InjectModel(Doctor.name)
-    private doctorModel: Model<Doctor>,
+    @InjectModel(Provider.name)
+    private providerModel: Model<Provider>,
     @InjectModel(Appointment.name)
     private _appointmentModel: Model<Appointment>,
-    @InjectModel(Patient.name)
-    private patientModel: Model<Patient>,
+    @InjectModel(Client.name)
+    private clientModel: Model<Client>,
     @InjectModel(Store.name)
     private readonly storeModel: Model<Store>,
     @InjectModel(Affiliate.name)
@@ -25,13 +25,13 @@ export class SeedService {
 
   async excuteSeed() {
     // await this._appointmentModel.deleteMany({});
-    await this.doctorModel.deleteMany();
+    await this.providerModel.deleteMany();
     // await this.patientModel.deleteMany();
     // await this.affiliateModel.deleteMany();
     // await this.storeModel.deleteMany();
     const data = initialData;
     // Insertar doctores y pacientes y guardar los registros creados
-    const createdDoctors = await this.doctorModel.insertMany(
+    const createdProviders = await this.providerModel.insertMany(
       initialData.doctor,
     );
     // const createdPatients = await this.patientModel.insertMany(

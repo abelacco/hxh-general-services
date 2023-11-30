@@ -4,10 +4,8 @@ import { EnvConfiguration } from './config/app.config';
 import { JoiValidationSchema } from './config/joi.validation';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { DoctorModule } from './hotel/hotel.module';
 import { SeedModule } from './seed/seed.module';
 import { AppointmentModule } from './appointment/appointment.module';
-import { PatientModule } from './patient/patient.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { NotificationModule } from './notification/notification.module';
 import { AffiliateModule } from './affiliate/affiliate.module';
@@ -15,6 +13,8 @@ import { StoreModule } from './store/store.module';
 import { ApiPeruModule } from './api-peru/api-peru.module';
 import { PaymentModule } from './payment/payment.module';
 import { CulquiModule } from './culqui/culqui.module';
+import { ClientModule } from './client/client.module';
+import { ProviderModule } from './provider/provider.module';
 
 @Module({
   imports: [
@@ -24,10 +24,10 @@ import { CulquiModule } from './culqui/culqui.module';
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.MONGODB),
-    DoctorModule,
+    ProviderModule,
     SeedModule,
     AppointmentModule,
-    PatientModule,
+    ClientModule,
     CloudinaryModule,
     NotificationModule,
     StoreModule,

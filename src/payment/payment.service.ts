@@ -23,7 +23,7 @@ import {
   CalculateDate,
   transformIntoPayment,
 } from './utils/helper/';
-import { DoctorService } from 'src/doctor/doctor.service';
+import { ProviderService } from 'src/provider/provider.service';
 
 @Injectable()
 export class PaymentService {
@@ -32,7 +32,7 @@ export class PaymentService {
     @Inject(forwardRef(() => AppointmentService))
     private readonly _appointmentService: AppointmentService,
     readonly _mongoDbService: MongoDbService,
-    readonly _doctorService: DoctorService,
+    readonly _providerService: ProviderService,
   ) {
     this._db = _mongoDbService;
   }
@@ -142,7 +142,7 @@ export class PaymentService {
   async filterBy(filterPaymentDto: FilterPaymentsDto) {
     try {
       if (filterPaymentDto.doctorName) {
-        const findDoctor = await this._doctorService.getByName(
+        const findDoctor = await this._providerService.getByName(
           filterPaymentDto.doctorName,
         );
         return await this._db.filterBy({
