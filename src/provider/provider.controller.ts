@@ -1,16 +1,16 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseInterceptors, UploadedFile } from '@nestjs/common';
-import { HotelService } from './hotel.service';
-import { CreateHotelDto , FindHotelDto, UpdateHotelDto } from './dto/index';
+import { ProviderService } from './provider.service';
+import { CreateProviderDto, FindProviderDto, UpdateProviderDto } from './dto/index';
 import { ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { Hotel } from './entities/hotel.entity';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiResponse as ApiResponseModel } from 'src/common/models/api-response';
 import { ApiResponseStatus } from 'src/common/constants';
+import { Provider } from './entities/provider.entity';
 
-@ApiTags('Hotel')
-@Controller('hotel')
-export class HotelController {
-  constructor(private readonly hotelService: HotelService) {}
+@ApiTags('Provider')
+@Controller('provider')
+export class ProviderController {
+  constructor(private readonly providerService: ProviderService) {}
 
   
   // @Post()
@@ -21,15 +21,15 @@ export class HotelController {
   // }
   @Post()
   @UseInterceptors(FileInterceptor('file'))
-  @ApiResponse({status: 201, description: 'Hotel was created', type: Hotel})
+  @ApiResponse({status: 201, description: 'Provider was created', type: Provider})
   @ApiResponse({status: 400, description: 'Bad request'})
-  create(@UploadedFile() file: Express.Multer.File, @Body() createHotelDto: CreateHotelDto) {
-    return this.hotelService.addOne(createHotelDto, file);
+  create(@UploadedFile() file: Express.Multer.File, @Body() createProviderDto: CreateProviderDto) {
+    return this.providerService.addOne(createProviderDto, file);
   }
 
   @Get()
-  async findAll(@Query() props?: FindHotelDto) {
-    return this.hotelService.getAll(props);
+  async findAll(@Query() props?: FindProviderDto) {
+    return this.providerService.getAll(props);
     // try {
     //   const result = await this.hotelService.getAll(props);
       
@@ -46,9 +46,9 @@ export class HotelController {
   }
 
   @Get('paginate')
-  async findAllByPagination(@Query() props?: FindHotelDto) {
+  async findAllByPagination(@Query() props?: FindProviderDto) {
     try {
-      const response = await this.hotelService.getAllByPagination(props);
+      const response = await this.providerService.getAllByPagination(props);
       
       // Retorna directamente el resultado en el constructor de ApiResponseModel
       return new ApiResponseModel(
@@ -58,7 +58,7 @@ export class HotelController {
       );
     } catch (error) {
       // Maneja el error, devolviendo una respuesta de error
-      return new ApiResponseModel(null, 'Error al obtener los hoteles', ApiResponseStatus.ERROR);
+      return new ApiResponseModel(null, 'Error al obtener los providers', ApiResponseStatus.ERROR);
     }
   }
 
@@ -67,15 +67,15 @@ export class HotelController {
     name: 'id'
   })
   findOne(@Param('id') id: string) {
-    return this.hotelService.getById(id);
+    return this.providerService.getById(id);
   }
 
   @Patch(':id')
   @ApiParam({
     name: 'id'
   })
-  update(@Param('id') id: string, @Body() UpdateHotelDto: UpdateHotelDto) {
-    return this.hotelService.update(id, UpdateHotelDto);
+  update(@Param('id') id: string, @Body() UpdateHotelDto: UpdateProviderDto) {
+    return this.providerService.update(id, UpdateHotelDto);
   }
 
   @Delete(':id')
@@ -83,6 +83,6 @@ export class HotelController {
     name: 'id'
   })
   remove(@Param('id') id: string) {
-    return this.hotelService.remove(id);
+    return this.providerService.remove(id);
   }
 }

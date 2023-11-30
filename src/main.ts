@@ -19,8 +19,8 @@ async function bootstrap() {
   app.setGlobalPrefix('/api/v1');
 
   const config = new DocumentBuilder()
-    .setTitle('Qali Services')
-    .setDescription('The Qali Services API endpoints')
+    .setTitle('hxh-general-services-db')
+    .setDescription('The hxh-general-services-db API endpoints')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);

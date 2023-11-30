@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsArray, IsIn, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 
-export class CreateHotelDto {
+export class CreateProviderDto {
 
   @ApiProperty()
   @IsString()
