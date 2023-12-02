@@ -71,8 +71,8 @@ export class MongoDbService implements IAppointmentDao {
     try {
       const results = await this._appointmentModel
         .find()
-        .populate('doctorId')
-        .populate('patientId')
+        .populate('providerId')
+        .populate('clientId')
         .exec();
       return results;
     } catch (error) {
@@ -85,8 +85,8 @@ export class MongoDbService implements IAppointmentDao {
     try {
       const appointment = await this._appointmentModel
         .findById(id)
-        .populate('doctorId')
-        .populate('patientId')
+        .populate('providerId')
+        .populate('clientId')
         .exec();
       return appointment;
     } catch (error) {
