@@ -4,12 +4,12 @@ import { IsDate, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-valida
 export class CreateAppointmentDto {
   @ApiProperty()
   @IsString()
-  doctorId: string;
+  providerId: string;
 
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  patientId: string;
+  clientId: string;
 
   @ApiProperty()
   @IsDate()

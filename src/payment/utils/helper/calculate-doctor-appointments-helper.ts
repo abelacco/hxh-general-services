@@ -8,10 +8,10 @@ export function CalculateDoctorsAppointments(
   let result: IAppointmentResult[] = [];
 
   appointments.reduce((acc, el) => {
-    if (!acc[el.doctorId]) {
+    if (!acc[el.providerId]) {
       const generateDates = CalculateDate(el.createdAt);
-      acc[el.doctorId] = {
-        doctorId: el.doctorId,
+      acc[el.providerId] = {
+        doctorId: el.providerId,
         appointmentQ: 1,
         transactionBeforeFee: el.fee,
         startDate: generateDates.startDate,
@@ -19,8 +19,8 @@ export function CalculateDoctorsAppointments(
         paymentDate: generateDates.paymentDate,
       };
     } else {
-      acc[el.doctorId].appointmentQ += 1;
-      acc[el.doctorId].transactionBeforeFee += el.fee;
+      acc[el.providerId].appointmentQ += 1;
+      acc[el.providerId].transactionBeforeFee += el.fee;
     }
     return acc;
   }, result);

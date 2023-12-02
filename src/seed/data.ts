@@ -1,4 +1,4 @@
-interface SeedDoctor {
+interface SeedProvider {
   name: string;
   phone: string;
   speciality: string;
@@ -9,7 +9,7 @@ interface SeedDoctor {
 
 }
 
-interface SeedPatient {
+interface SeedClient {
   name: string;
   phone: string;
 }
@@ -41,8 +41,8 @@ export interface SeedAffiliate {
 interface SeedData {
   affiliate: SeedAffiliate[];
   store: SeedStore[];
-  doctor: SeedDoctor[];
-  patient: SeedPatient[];
+  provider: SeedProvider[];
+  client: SeedClient[];
   appointment: SeedAppointment[];
 }
 
@@ -98,7 +98,7 @@ export const initialData: SeedData = {
       long: '787878',
     },
   ],
-  doctor: [
+  provider: [
     {
       name: 'Dr. Abel Acuña',
       phone: '51947308823',
@@ -192,7 +192,7 @@ export const initialData: SeedData = {
     }
   ],
 
-  patient: [
+  client: [
     {
       name: 'Paciente 1',
       phone: '125-456-7890',

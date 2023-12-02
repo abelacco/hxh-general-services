@@ -29,7 +29,7 @@ export class NotificationService {
     await this._paymentService.createOne({
       appointmentQ: 1,
       date: findAppointment.createdAt,
-      doctorId: findAppointment.doctorId,
+      doctorId: findAppointment.providerId,
       transactionBeforeFee: findAppointment.fee,
     });
     return response;

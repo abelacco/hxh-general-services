@@ -67,7 +67,7 @@ export class MongoDbService implements IProviderDao {
   async findByName(name: string): Promise<Provider> {
     try {
       const findProvider: Provider = await this._providerModel.findOne({ name });
-      if (!findProvider) throw new NotFoundException('hotel not found!');
+      if (!findProvider) throw new NotFoundException('Provider not found!');
       return findProvider;
     } catch (error) {
       if (error instanceof mongo.MongoError) mongoExceptionHandler(error);
@@ -77,8 +77,8 @@ export class MongoDbService implements IProviderDao {
 
   async findById(id: string): Promise<Provider> {
     try {
-      const hotel = await this._providerModel.findById(id);
-      return hotel;
+      const result = await this._providerModel.findById(id);
+      return result;
     } catch (error) {
       if (error instanceof mongo.MongoError) mongoExceptionHandler(error);
       else throw error;
