@@ -2,11 +2,11 @@ import { CreateProviderDto, FindProviderDto, UpdateProviderDto } from '../dto/in
 import { Provider } from '../entities/provider.entity';
 
 export interface IProviderDao {
-  create(createDoctoDto: CreateProviderDto): Promise<Provider>;
+  create(createProviderDto: CreateProviderDto): Promise<Provider>;
 
   findAll(props?: FindProviderDto): Promise<Array<Provider>>;
     
-  findAllByPagination(findHotelDto: FindProviderDto): Promise<{ data: Provider[]; total: number }>;
+  findAllByPagination(findProviderDto: FindProviderDto): Promise<{ data: Provider[]; total: number }>;
 
   findById(id: string): Promise<Provider>;
 

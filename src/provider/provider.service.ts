@@ -14,18 +14,19 @@ export class ProviderService {
     this._db = _mongoDbService;
   }
 
+
   async addOne(createProviderDto: CreateProviderDto , imageFile: Express.Multer.File): Promise<Provider> {
     try {
     // Subir la imagen a Cloudinary y obtener la URL
     const cloudinaryResponse = await this.cloudinaryService.uploadFile(imageFile);
     const imageUrl = cloudinaryResponse.url;
     console.log(imageUrl);
-    // Construir el objeto CreateHotel con la URL de la imagen
+    // Construir el objeto CreateProvider con la URL de la imagen
     const finalProviderData = {
       ...createProviderDto,
       imageUrl: imageUrl
     };
-    console.log("finalHotelData with imageUrl",finalProviderData);
+    console.log("finalProviderData with imageUrl",finalProviderData);
     // Llamar al método de la base de datos para crear el doctor
     // return this.doctorDbService.addOne(finalHotelData);
       const createProvider = await this._db.create(finalProviderData);
@@ -39,7 +40,7 @@ export class ProviderService {
   async getAll(props?: FindProviderDto): Promise<Array<Provider>> {
     try {
       const results = await this._db.findAll(props);
-      if (!results) throw new NotFoundException('Could not find any doctor');
+      if (!results) throw new NotFoundException('Could not find any provider');
       return results;
     } catch (error) {
       throw error;
@@ -68,7 +69,7 @@ export class ProviderService {
   async getById(id: string): Promise<Provider> {
     try {
       const provider = await this._db.findById(id);
-      if (!provider) throw new NotFoundException('Doctor not found');
+      if (!provider) throw new NotFoundException('Provider not found');
       return provider;
     } catch (error) {
       throw error;
