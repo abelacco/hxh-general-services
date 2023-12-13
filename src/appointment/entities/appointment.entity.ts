@@ -11,16 +11,16 @@ export class Appointment extends Document {
   @ApiProperty()
   @Prop({
     type: Types.ObjectId,
-    ref: 'Doctor', // Ref doctor
+    ref: 'Provider', // Ref provider
   })
   providerId: string;
 
   @ApiProperty()
   @Prop({
     type: Types.ObjectId,
-    ref: 'Patient', // Ref Patient
+    ref: 'Client', // Ref client
   })
-  ClientId: string;
+  clientId: string;
 
 
   @ApiProperty()
