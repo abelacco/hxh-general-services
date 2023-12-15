@@ -22,9 +22,10 @@ export class CreateAppointmentDto {
   @ApiProperty()
   @IsOptional()
   @IsString()
-  code?: number;
+  code?: string;
 
   @ApiProperty()
   @IsOptional()
   voucher?: string;
+
 }

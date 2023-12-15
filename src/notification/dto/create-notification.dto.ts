@@ -3,9 +3,9 @@ import { Status } from "src/common/constants";
 
 export class CreateNotificationDto {
 
-    @IsEnum(Status)
+    @IsString()
     @IsIn([Status.CONFIRMED, Status.CANCELED])
-    status: Status;
+    status: string;
 
     @IsString()
     id: string;

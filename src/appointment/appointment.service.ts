@@ -85,22 +85,23 @@ export class AppointmentService {
       await this.update(id, updateAppointmentDto);
       let createNotificationDto = {
         status: updateAppointmentDto.status,
+        code: updateAppointmentDto.code,
         id: id,
       };
-      console.log(updateAppointmentDto);
+      // console.log(updateAppointmentDto);
       if (
         updateAppointmentDto.status === Status.CONFIRMED ||
         updateAppointmentDto.status === Status.CANCELED
       ) {
         console.log('confirm payment');
-        this.noficationService.confirmPayment(createNotificationDto);
+        await this.noficationService.confirmPayment(createNotificationDto);
       }
     } catch (error) {
       throw error;
     }
   }
 
-  async FilterAppointmentsByDate(startDateDto: StartDateDto) {
+  async filterAppointmentsByDate(startDateDto: StartDateDto) {
     try {
       return await this._mongoDbService.filterByDate(startDateDto);
     } catch (error) {

@@ -18,20 +18,29 @@ export class NotificationService {
     const wspServicesUrl = this.configService.get<string>(
       'WSP_SERVICES',
     );
-    const response = await axios.post(
-      `${wspServicesUrl}/paymentStatus`,
-      createNotificationDto,
-    );
-    const findAppointment = await this._appointmentService.getById(
-      createNotificationDto.id,
-    );
+    try {
 
-    await this._paymentService.createOne({
-      appointmentQ: 1,
-      date: findAppointment.createdAt,
-      doctorId: findAppointment.providerId,
-      transactionBeforeFee: findAppointment.fee,
-    });
-    return response;
+      const response = await axios.post(
+        `${wspServicesUrl}message/paymentStatus`,
+        createNotificationDto,
+      );
+      const findAppointment = await this.
+      _appointmentService.getById(
+        createNotificationDto.id,
+      );
+  
+      await this._paymentService.createOne({
+        appointmentQ: 1,
+        date: findAppointment.createdAt,
+        doctorId: findAppointment.providerId,
+        transactionBeforeFee: findAppointment.fee,
+      });
+      return response;
+      
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+
   }
 }

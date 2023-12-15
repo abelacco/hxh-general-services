@@ -37,9 +37,9 @@ export class Appointment extends Document {
 
   @ApiProperty()
   @Prop({
-    type: Number,
+    type: String,
     enum: Status,
-    default: 0,
+    default: Status.PENDING,
   })
   status: number;
 
